@@ -1,0 +1,29 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+<h2 *ngIf="display">Not Hidden</h2>
+<h2 *ngIf="!display">Hidden</h2>
+
+<div *ngIf="!display; then helloBlock; else notHelloBlock"></div>
+<ng-template #helloBlock>
+  <h2>
+    I'm If block!
+  </h2>
+</ng-template>
+<ng-template #notHelloBlock>
+  <h2>
+    I'm else block!
+  </h2>
+</ng-template>
+
+
+<h2 *ngIf="display; else elseBlock">I'm if block!</h2>
+<ng-template #elseBlock>
+  <h2>
+    I'm else block!
+  </h2>
+</ng-template>

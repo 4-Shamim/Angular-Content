@@ -1,0 +1,30 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+<div *ngFor="let color of colors">
+  <h2>{{color}}</h2>
+</div>
+
+<div *ngFor="let color of colors; index as i">
+  <h2>{{i}} {{color}}</h2>
+</div>
+
+<div *ngFor="let color of colors; first as f">
+  <h2>{{f}} {{color}}</h2>
+</div>
+
+<div *ngFor="let color of colors; first as l">
+  <h2>{{l}} {{color}}</h2>
+</div>
+
+<div *ngFor="let color of colors; odd as o">
+  <h2>{{o}} {{color}}</h2>
+</div>
+
+<div style="background-color: #ddd; padding: 10px">
+  <h2 *ngFor="let color of colors">{{color}}</h2>
+</div>

@@ -1,0 +1,15 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+
+<div [ngSwitch]="color">
+  <h2 *ngSwitchCase="'red'">You Choose Red Color.</h2>
+  <h2 *ngSwitchCase="'green'">You Choose Green Color.</h2>
+  <h2 *ngSwitchCase="'blue'">You Choose Blue Color.</h2>
+  <h2 *ngSwitchDefault>Pick Again</h2>
+</div>
+

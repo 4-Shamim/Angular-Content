@@ -1,0 +1,30 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+<h2>{{message}}</h2>
+<h2>{{message | lowercase}}</h2>
+<h2>{{message | uppercase}}</h2>
+<h2>{{message | titlecase}}</h2>
+<h2>{{message | slice:3}}</h2>
+<h2>{{message | slice:3:5}}</h2>
+<h2>{{product | json}}</h2>
+
+
+<h2>{{5.8589 | number:'1.2-3'}}</h2>
+<h2>{{5.8589 | number:'3.5-6'}}</h2>
+<h2>{{5.8589 | number:'3.1-2'}}</h2>
+
+
+<h2>{{0.25 | percent}}</h2>
+<h2>{{0.25 | currency}}</h2>
+<h2>{{0.25 | currency: 'EUR'}}</h2>
+<h2>{{0.25 | currency: 'EUR' : 'code'}}</h2>
+
+<h2>{{date}}</h2>
+<h2>{{date | date:'short'}}</h2>
+<h2>{{date | date: 'shortDate'}}</h2>
+<h2>{{date | date: 'mediumDate'}}</h2>
