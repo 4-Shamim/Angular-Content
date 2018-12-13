@@ -1,0 +1,19 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+  <h2 class="text-success">Angular Class Binding</h2>
+  <h2 [class]="successClass">Angular Class Binding</h2>
+  <!-- Not Work -->
+  <h2 [class]="successClass" class="text-special">Angular Class Binding</h2>
+
+  <h2 [class.text-danger]="hasError" >Angular Class Binding</h2>
+  <h2 [class.text-danger]="hasError" class="text-special" >Angular Class Binding</h2>
+
+
+  <h2 [ngClass]="messageClasses" >Angular Class Binding</h2>
+  
+</div>
+
+
