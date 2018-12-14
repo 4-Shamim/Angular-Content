@@ -1,0 +1,15 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+<ul>
+  <li *ngFor="let product of products">{{product.name}}</li>
+</ul>
+
+<div style="background-color: #ddd; padding: 10px;">
+  <h4 *ngFor="let p of products">{{p.id}}. {{p.name}} - {{p.price}}</h4>
+</div>
+
