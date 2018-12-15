@@ -3,11 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DepartmentDetailsComponent } from './department-details/department-details.component';
+import { DepartmentContactComponent } from './department-contact/department-contact.component';
+import { DepartmentOverviewComponent } from './department-overview/department-overview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    DepartmentDetailsComponent,
+    DepartmentContactComponent,
+    DepartmentOverviewComponent
   ],
   imports: [
     BrowserModule,

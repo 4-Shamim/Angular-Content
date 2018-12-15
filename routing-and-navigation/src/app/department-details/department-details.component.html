@@ -1,0 +1,17 @@
+<h2>Department Details</h2>
+<h3>You select department {{departmentId}}</h3>
+
+<div class="my-3">
+  <div class="my-3">
+    <button class="btn btn-primary mr-3" (click)="showOverview()">Overview</button>
+    <button class="btn btn-primary" (click)="showContact()">Contact</button>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+
+<button class="btn btn-primary mr-3" (click)="goPrevious()">Previous</button>
+<button class="btn btn-primary" (click)="goNext()">Next</button>
+
+<div class="my-3">
+  <button (click)="onBack()" class="btn btn-primary">Back</button>
+</div>
