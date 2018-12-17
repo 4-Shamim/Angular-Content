@@ -1,0 +1,69 @@
+<div class="container my-3">
+
+  <form #userForm="ngForm" action="">
+
+    <!-- full model form -->
+    <!-- {{userForm.value | json}}
+    <hr>
+    {{userModel | json}} -->
+
+    <!-- particular field -->
+    <!-- {{name.untouched}} -->
+
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" [class.is-invalid]="name.invalid && name.touched" 
+      name="name" #name="ngModel" placeholder="Enter your name.." [(ngModel)]="userModel.name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email.." [(ngModel)]="userModel.email">
+    </div>
+
+    <div ngModelGroup="address">
+      <div class="form-group">
+        <label for="street">Street</label>
+        <input type="text" class="form-control" id="street" name="street" placeholder="Enter your street.." [(ngModel)]="userModel.address.street">
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city.." [(ngModel)]="userModel.address.city">
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" class="form-control" id="country" name="country" placeholder="Enter your city.." [(ngModel)]="userModel.address.country">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">phone</label>
+      <input type="text" class="form-control" [class.is-invalid]="phone.invalid && phone.touched" pattern="^\d{11}$" #phone="ngModel"
+      name="phone" id="phone" placeholder="Enter your Phone number.." [(ngModel)]="userModel.phone">
+    </div>
+
+    <select name="language" id="language" class="form-control my-3" [(ngModel)]="userModel.language">
+      <option value="" selected>I am interested in..</option>
+      <option *ngFor="let l of languages">{{l}}</option>
+    </select>
+
+    <div class="form-check">
+      <input type="radio" name="time" id="time1" class="form-check-input" value="morning" checked [(ngModel)]="userModel.time">
+      <label for="time1"> Morning(8am-11am) </label>
+    </div>
+    <div class="form-check">
+      <input type="radio" name="time" id="time2" class="form-check-input" value="evening" [(ngModel)]="userModel.time">
+      <label for="time2"> Evening(5pm-7pm) </label>
+    </div>
+
+    <div class="form-check">
+      <input type="checkbox" name="check" id="check" class="form-check-input" [(ngModel)]="userModel.subscribe">
+      <label for="check">Send me offers</label>
+    </div>
+
+    <input type="submit" value="Submit" class="btn btn-primary">
+
+  </form>
+
+</div>
