@@ -1,6 +1,10 @@
 <div class="container my-3">
 
-  <form #userForm="ngForm" action="">
+  <div class="alert alert-danger" *ngIf="errorMsg">
+    {{errorMsg}}
+  </div>
+
+  <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
 
     <!-- full model form -->
     <!-- {{userForm.value | json}}
@@ -10,11 +14,14 @@
     <!-- particular field -->
     <!-- {{name.untouched}} -->
 
+    {{userForm.form.valid}}
+  
 
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" [class.is-invalid]="name.invalid && name.touched" 
-      name="name" #name="ngModel" placeholder="Enter your name.." [(ngModel)]="userModel.name" required>
+      <input type="text" class="form-control" [class.is-invalid]="name.invalid && name.touched" name="name" #name="ngModel"
+        placeholder="Enter your name.." [(ngModel)]="userModel.name" required>
+      <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required.</small>
     </div>
 
     <div class="form-group">
@@ -39,14 +46,22 @@
 
     <div class="form-group">
       <label for="phone">phone</label>
-      <input type="text" class="form-control" [class.is-invalid]="phone.invalid && phone.touched" pattern="^\d{11}$" #phone="ngModel"
-      name="phone" id="phone" placeholder="Enter your Phone number.." [(ngModel)]="userModel.phone">
+      <input type="text" class="form-control" [class.is-invalid]="phone.invalid && phone.touched" pattern="^\d{11}$"
+        required #phone="ngModel" name="phone" id="phone" placeholder="Enter your Phone number.." [(ngModel)]="userModel.phone">
+      <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+        <small class="text-danger" *ngIf="phone.errors.required">Phone number is required</small>
+        <small class="text-danger" *ngIf="phone.errors.pattern">Phone number must be 10 digits</small>
+      </div>
     </div>
 
-    <select name="language" id="language" class="form-control my-3" [(ngModel)]="userModel.language">
-      <option value="" selected>I am interested in..</option>
-      <option *ngFor="let l of languages">{{l}}</option>
-    </select>
+    <div class="my-3">
+      <select (blur)="validateLanguage(language.value)" (change)="validateLanguage(language.value)" #language="ngModel" name="language" id="language" 
+      class="form-control" [class.is-invalid]="languageHasError && language.touched" [(ngModel)]="userModel.language">
+        <option value="default" selected>I am interested in..</option>
+        <option *ngFor="let lan of languages">{{lan}}</option>
+      </select>
+      <small class="text-danger" [class.d-none]="!languageHasError || language.untouched">Please choose a language</small>
+    </div>
 
     <div class="form-check">
       <input type="radio" name="time" id="time1" class="form-check-input" value="morning" checked [(ngModel)]="userModel.time">
@@ -62,7 +77,7 @@
       <label for="check">Send me offers</label>
     </div>
 
-    <input type="submit" value="Submit" class="btn btn-primary">
+    <input [disabled]="userForm.form.invalid || languageHasError" type="submit" value="Submit" class="btn btn-primary">
 
   </form>
 
